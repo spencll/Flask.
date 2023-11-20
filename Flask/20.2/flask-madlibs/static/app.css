@@ -1,0 +1,22 @@
+.navbar {
+    background-color:green;
+    font-size: larger;
+    margin: 0px;
+    padding: 0%;
+}
+h1 {
+    background-color: gray;
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    margin: 0%;
+}
+
+#form {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: red;
+}

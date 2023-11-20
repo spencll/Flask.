@@ -1,0 +1,14 @@
+{% extends 'base.html'  %}
+{% block title %}Story form{% endblock %}
+
+{% block content %}
+<h1>Input story elements</h1>
+<form action="/story" id="form">
+  <input type="text" placeholder="place" name="place">
+  <input type="text" placeholder="noun" name="noun">
+  <input type="text" placeholder="verb" name="verb">
+  <input type="text" placeholder="adjective" name="adjective">
+  <input type="text" placeholder="plural noun" name="plural_noun">
+  <button>Submit!</button>
+</form>
+{% endblock %}
