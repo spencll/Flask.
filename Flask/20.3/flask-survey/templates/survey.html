@@ -1,0 +1,20 @@
+{% extends 'base.html'  %}
+{% block title %}Survey title{% endblock %}
+
+{% block content %}
+
+{%if question_number != (surveys.questions|length) %}
+<form action="/answer" method="POST">
+    <h1>{{surveys.questions[question_number].question}}</h1>
+    {% for choice in surveys.questions[question_number].choices %}
+    <p><input type="radio" name="answer" value="{{ choice }}"> {{ choice }}</p>
+    {% endfor %}
+    <button>Submit!</button>
+    <footer>Your responses: {{responses}}</footer>
+  </form>
+  {%else %}
+  <h1>Completed! Thank you for your time. </h1>
+  <footer>Your responses:{{responses}}</footer>
+  {% endif %}
+
+{% endblock %}
