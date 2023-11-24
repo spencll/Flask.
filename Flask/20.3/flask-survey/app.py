@@ -1,8 +1,8 @@
-from flask import Flask, request, render_template, redirect, flash, jsonify
+from flask import Flask, request, render_template, redirect, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 from surveys import surveys
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "chickenzarecool21837"
+app.config['SECRET_KEY'] = "123"
 debug = DebugToolbarExtension(app)
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 RESPONSES = []
@@ -14,13 +14,18 @@ def home():
     RESPONSES.clear()
     return render_template('home.html', surveys=surveys['satisfaction'], question_number=0)
 
-@app.route('/start')
+@app.route('/start', methods=['POST'])
 def start():
+     if not session['responses']:
+        session['responses'] = []
      return redirect('/questions/0')
 
 #stores responses, goes to next question
 @app.route('/answer',methods=["POST"])
 def answer():
+     rebind = session['responses']
+     rebind.append(request.form['answer'])
+     session['responses'] = rebind
      RESPONSES.append(request.form['answer'])
      return redirect(f"/questions/{len(RESPONSES)}")
 
