@@ -1,0 +1,38 @@
+{% extends 'base.html'  %}
+{% block title %}Boggle{% endblock %}
+{% block content %}
+<h1>Boggle</h1>
+<h1>High score: {{highscore}}</h1>
+<h1>Number of plays: {{nplays}}</h1>
+<!-- Generating board using list of rows -->
+<table>
+  {%for row in board%}
+  <tr>
+    {%for letter in row%}
+    <td>{{letter}}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+<!-- Generating board using list of rows -->
+<h1>Timer</h1>
+<h2 id="time"></h2>
+
+<!-- Form -->
+<form id="guess" class="guess">
+  <h1>Guess:</h1>
+  <input type="text" name="guess">
+  <button>Submit!</button>
+</form>
+
+<!-- Guess list -->
+<label><b>Valid guesses:</b></label>
+<ul id="guesses">
+</ul>
+
+<label><b>Score: </b></label>
+<h3 id="score"></h3>
+
+
+</table>
+{% endblock %}
